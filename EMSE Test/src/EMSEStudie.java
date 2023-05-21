@@ -21,51 +21,51 @@ public class EMSEStudie {
     private static JPanel resultPanel;
 
     public static void main(String[] args) {
-        // Add your questions and options to the respective lists
-        questions.add("<html><font color='blue'><b>Which programming language is your favorite?</b></font></html>");
+        // Fragen und Antworten zur Liste hinzufügen
+        questions.add("<html><font color='blue'><b>Welche ist deine Lieblings-Programmiersprache?</b></font></html>");
         List<String> options1 = new ArrayList<>();
         options1.add("Java");
         options1.add("Python");
         options1.add("C");
         options.add(options1);
 
-        questions.add("<html><font color='green'>What is your preferred IDE?</font></html>");
+        questions.add("<html><font color='green'>Welcher ist dein favourisierter IDE für JAVA?</font></html>");
         List<String> options2 = new ArrayList<>();
         options2.add("Eclipse");
         options2.add("IntelliJ IDEA");
         options2.add("Visual Studio");
         options.add(options2);
 
-        questions.add("<html><font color='red'><i>How often do you use version control?</i></font></html>");
+        questions.add("<html><font color='red'><i>Wie oft Programmierst du in deiner Freizeit?</i></font></html>");
         List<String> options3 = new ArrayList<>();
-        options3.add("Frequently");
-        options3.add("Sometimes");
-        options3.add("Rarely");
-        options3.add("Never");
+        options3.add("Sehr häufig");
+        options3.add("Manchmal");
+        options3.add("Selten");
+        options3.add("Nie");
         options.add(options3);
 
-        // Create the GUI frame
-        frame = new JFrame("EMSE Study");
+        // Frame der Benutzeroberfläche erstellen
+        frame = new JFrame("EMSE Studie");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridLayout(0, 1)); // Use GridLayout with 1 column
+        frame.setLayout(new GridLayout(0, 1)); // Layout mit einer Spalte
 
-        // Create the question label
+        // Label für Frage erstellen
         questionLabel = new JLabel();
         questionLabel.setHorizontalAlignment(SwingConstants.CENTER); // Center-align the text
         frame.getContentPane().add(questionLabel);
 
-        // Create the result panel
+        // Ergebnis Anordnung
         resultPanel = new JPanel();
         resultPanel.setLayout(new GridLayout(0, 1)); // Use GridLayout with 1 column
         frame.getContentPane().add(resultPanel);
 
-        // Create the button panel
+        // Button Anordnung
         buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(0, 1)); // Use GridLayout with 1 column
         frame.getContentPane().add(buttonPanel);
 
-        // Create the next button
-        nextButton = new JButton("Next");
+        // Weiter-Butto
+        nextButton = new JButton("Weiter");
         nextButton.setEnabled(false);
         nextButton.addActionListener(new ActionListener() {
             @Override
@@ -82,33 +82,33 @@ public class EMSEStudie {
         });
         frame.getContentPane().add(nextButton);
 
-        // Set frame properties and display it
+        // Fenstergröße
         frame.setSize(500, 400);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        // Display the first question
+        // Erste Frage
         displayNextQuestion();
     }
 
     private static void displayNextQuestion() {
-        // Clear the result panel
+        // Ergebnis löschen
         resultPanel.removeAll();
 
-        // Clear the button panel
+        // Buttons löschen
         buttonPanel.removeAll();
 
-        // Get the current question and options
+        // Nächste Frage und Antworten
         String question = questions.get(currentIndex);
         List<String> optionList = options.get(currentIndex);
 
-        // Set the question label text
+        // Frage anzeigen
         questionLabel.setText(question);
         
-     // Assign the start time
+     // Startzeit
         startTime = System.currentTimeMillis();
 
-        // Create the buttons based on the options
+        // Buttons mit den Antworten erstellen
         for (String option : optionList) {
             JButton button = new JButton(option);
             button.addActionListener(new ActionListener() {
@@ -125,11 +125,11 @@ public class EMSEStudie {
                     disableButtons();
                 }
             });
-            button.setFont(button.getFont().deriveFont(16f)); // Set the button font size to 16 pixels
+            button.setFont(button.getFont().deriveFont(16f)); // Antwort Schriftgröße (16)
             buttonPanel.add(button);
         }
 
-        // Repaint the frame to reflect the changes
+        // Neuaufbau der Oberfläche um Änderungen leichter sichtbar zu machen
         frame.revalidate();
         frame.repaint();
     }
