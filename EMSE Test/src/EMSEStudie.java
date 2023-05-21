@@ -117,7 +117,8 @@ public class EMSEStudie {
                     JButton sourceButton = (JButton) e.getSource();
                     selectedAnswers.add(currentIndex, sourceButton.getText());
                     recordTime();
-                    answerLabel = new JLabel(sourceButton.getText() + " (Time: " + formatTime(times.get(currentIndex)) + " sec)");
+                    answerLabel = new JLabel("<html><div style='text-align: center;'>" + sourceButton.getText() + " (Time: " + formatTime(times.get(currentIndex)) + " sec)</div></html>");
+                    answerLabel.setHorizontalAlignment(SwingConstants.CENTER);
                     resultPanel.add(answerLabel);
                     nextButton.setEnabled(true);
                     frame.revalidate();
