@@ -143,13 +143,14 @@ public class EMSEStudieInput {
     }
 
     private static void stopTimerAndProceed(JTextField answerTextField) {
-        recordTime();
         String answer = answerTextField.getText();
         answers.set(currentIndex, answer);
+        recordTime();
         answerTextField.setEnabled(false);
         nextButton.setEnabled(true);
         nextButton.requestFocus();
     }
+
     
     //Zeit aufzeichnen
 
