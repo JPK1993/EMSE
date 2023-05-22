@@ -23,13 +23,13 @@ public class EMSEStudieInput {
     public static void main(String[] args) {
         // Fragen und Antworten zur Liste hinzufügen
         questions.add("<html><font color='blue'><b>Welche ist deine Lieblings-Programmiersprache?</b></font></html>");
-        answers.add(""); // Placeholder for answer
+        answers.add(""); // Platzhalter für Antwort
 
         questions.add("<html><font color='green'>Welcher ist dein favourisierter IDE für JAVA?</font></html>");
-        answers.add(""); // Placeholder for answer
+        answers.add(""); // Platzhalter für Antwort
 
         questions.add("<html><font color='red'><i>Wie oft Programmierst du in deiner Freizeit?</i></font></html>");
-        answers.add(""); // Placeholder for answer
+        answers.add(""); // Platzhalter für Antwort
 
         // Hauptframe erstellen
         mainFrame = new JFrame("EMSE Studie");
