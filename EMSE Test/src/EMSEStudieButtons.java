@@ -7,7 +7,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EMSEStudie {
+
+
+public class EMSEStudieButtons {
     private static List<String> questions = new ArrayList<>();
     private static List<List<String>> options = new ArrayList<>();
     private static List<Double> times = new ArrayList<>();
@@ -140,7 +142,6 @@ public class EMSEStudie {
         double elapsedTimeSeconds = (endTime - startTime) / 1000.0;
         times.add(elapsedTimeSeconds);
     }
-
 
 
 
