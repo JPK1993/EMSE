@@ -40,9 +40,9 @@ public class EMSEStudieInput {
         JTextArea instructionsArea = new JTextArea();
         instructionsArea.setEditable(false);
         instructionsArea.setText("Der Test zum Thema Syntax-Highlighting beginnt in Kürze."
-        						+ "\n \n Bitte geben sie Ihre Antwort im Textfeld ein und bestätigen Sie mit der ENTER-Taste."
-        						+ "\n Anschließend können Sie durch klicken des WEITER-Buttons zur nächsten Frage springen."
-        						+ "\n \n Um zu beginnen, klicken Sie bitte auf 'Start'.");
+                + "\n \n Bitte geben sie Ihre Antwort im Textfeld ein. Der Weiter-Button wird aktiviert, sobald eine Zahl eingegeben wird."
+                + "\n \n Anschließend können Sie durch Klicken des WEITER-Buttons zur nächsten Frage springen."
+                + "\n \n Um zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
         instructionsArea.setWrapStyleWord(true);
         mainFrame.add(instructionsArea, BorderLayout.CENTER);
@@ -78,10 +78,12 @@ public class EMSEStudieInput {
         // Antwort-Textfeld
         JTextField answerTextField = new JTextField();
         answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
-        answerTextField.addActionListener(new ActionListener() {
+        answerTextField.addKeyListener(new KeyAdapter() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                stopTimerAndProceed(answerTextField);
+            public void keyPressed(KeyEvent e) {
+                if (Character.isDigit(e.getKeyChar())) {
+                    stopTimerAndProceed(answerTextField);
+                }
             }
         });
         questionFrame.getContentPane().add(answerTextField);
@@ -151,17 +153,14 @@ public class EMSEStudieInput {
         nextButton.requestFocus();
     }
 
-    
-    //Zeit aufzeichnen
-
+    // Zeit aufzeichnen
     private static void recordTime() {
         long endTime = System.currentTimeMillis();
         double elapsedTimeSeconds = (endTime - startTime) / 1000.0;
         times.add(elapsedTimeSeconds);
     }
-    
-    //Aufzeichnung in CSV speichern
 
+    // Aufzeichnung in CSV speichern
     private static void exportToCSV() {
         String csvFile = "recorded_times.csv";
         try (FileWriter writer = new FileWriter(csvFile)) {
@@ -176,9 +175,8 @@ public class EMSEStudieInput {
             e.printStackTrace();
         }
     }
-    
-    //HTML-Code aus Fragestellung entfernen vor dem Speichern
 
+    // HTML-Code aus Fragestellung entfernen vor dem Speichern
     private static String stripHtmlTags(String html) {
         return html.replaceAll("\\<.*?\\>", "");
     }
