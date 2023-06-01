@@ -80,7 +80,7 @@ public class EMSEStudieInput {
         answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
         answerTextField.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 if (Character.isDigit(e.getKeyChar())) {
                     stopTimerAndProceed(answerTextField);
                 }
@@ -145,7 +145,7 @@ public class EMSEStudieInput {
     }
 
     private static void stopTimerAndProceed(JTextField answerTextField) {
-        String answer = answerTextField.getText();
+        String answer = Character.toString(answerTextField.getText().charAt(0));
         answers.set(currentIndex, answer);
         recordTime();
         answerTextField.setEnabled(false);
