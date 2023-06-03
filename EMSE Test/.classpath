@@ -8,5 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/janko/Documents/GitHub/EMSE/EMSE Test/rsyntaxtextarea-3.3.3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/janko/Documents/GitHub/EMSE/EMSE Test/google-java-format-1.17.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/janko/eclipse/java-2023-03/eclipse/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
