@@ -42,11 +42,14 @@ public class EMSEStudieInput {
         // Textbereich für Anweisungen
         JTextArea instructionsArea = new JTextArea();
         instructionsArea.setEditable(false);
-        instructionsArea.setText("Der Test zum Thema Syntax-Highlighting beginnt in Kürze."
-                + "\n \n Bitte geben sie Ihre Antwort im Textfeld ein. Der Weiter-Button wird aktiviert, sobald eine Zahl eingegeben wird."
-                + "\n \n Anschließend können Sie durch Klicken des WEITER-Buttons zur nächsten Frage springen."
+        instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
+        		+ "\n \n Es werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
+                + "\n \n Bitte zählen Sie (FEHLT NOCH) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
+                + "\n \n Sobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
+                + "\n \n Es werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
                 + "\n \n Um zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
+        instructionsArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Instruction-Area 
         instructionsArea.setWrapStyleWord(true);
         mainFrame.add(instructionsArea, BorderLayout.CENTER);
 
@@ -62,7 +65,7 @@ public class EMSEStudieInput {
         mainFrame.add(startButton, BorderLayout.SOUTH);
 
         // Hauptframe anzeigen
-        mainFrame.setSize(500, 400);
+        mainFrame.setSize(1000, 1000);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
     }
@@ -76,6 +79,7 @@ public class EMSEStudieInput {
         // Label für Frage erstellen
         questionLabel = new JLabel();
         questionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        questionLabel.setFont(new Font("Arial", Font.BOLD, 20)); // Schriftgröße für Fragen
         questionFrame.getContentPane().add(questionLabel);
 
         // Antwort-Textfeld
@@ -117,7 +121,7 @@ public class EMSEStudieInput {
         questionFrame.getContentPane().add(resultPanel);
 
         // Frage-Frame anzeigen
-        questionFrame.setSize(500, 400);
+        questionFrame.setSize(1000, 1000);
         questionFrame.setLocationRelativeTo(null);
         questionFrame.setVisible(true);
 
