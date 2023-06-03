@@ -8,11 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import javax.swing.JTextArea;
-import java.awt.Font;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import org.fife.ui.rtextarea.RTextScrollPane;
 
 public class EMSEStudieTest {
     private static List<String> questions = new ArrayList<>();
@@ -21,8 +16,8 @@ public class EMSEStudieTest {
     private static int currentIndex = 0;
     private static JFrame mainFrame;
     private static JFrame questionFrame;
-    private static JLabel questionLabel;
-    private static JTextArea questionArea;
+    private static JLabel questionNumberLabel;
+    private static JTextArea questionTextArea;
     private static JPanel resultPanel;
     private static JButton startButton;
     private static JButton nextButton;
@@ -31,13 +26,13 @@ public class EMSEStudieTest {
 
     public static void main(String[] args) {
         // Fragen und Antworten zur Liste hinzufügen
-        questions.add("class HelloWorld{}");
+        questions.add("<html><font color='blue'><b>Frage 99</b></font></html>");
         answers.add("5");
 
-        questions.add("Frage 2");
+        questions.add("<html><font color='green'>Frage 8</font></html>");
         answers.add("7");
 
-        questions.add("Frage 3");
+        questions.add("<html><font color='red'><i>Frage 7</i></font></html>");
         answers.add("3");
 
         // Hauptframe erstellen
@@ -49,7 +44,7 @@ public class EMSEStudieTest {
         JTextArea instructionsArea = new JTextArea();
         instructionsArea.setEditable(false);
         instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
-                + "\n \n Es werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
+        		+ "\n \n Es werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
                 + "\n \n Bitte zählen Sie (FEHLT NOCH) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
                 + "\n \n Sobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
                 + "\n \n Es werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
@@ -59,7 +54,7 @@ public class EMSEStudieTest {
         instructionsArea.setWrapStyleWord(true);
         mainFrame.add(instructionsArea, BorderLayout.CENTER);
 
-     // Start-Button
+        // Start-Button
         startButton = new JButton("Start");
         startButton.addActionListener(new ActionListener() {
             @Override
@@ -68,9 +63,7 @@ public class EMSEStudieTest {
                 openQuestionFrame();
             }
         });
-        startButton.setBounds(50, 300, 200, 50); // Set the position and size of the start button
         mainFrame.add(startButton, BorderLayout.SOUTH);
-        
 
         // Hauptframe anzeigen
         mainFrame.setSize(1000, 1000);
@@ -84,19 +77,23 @@ public class EMSEStudieTest {
         questionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         questionFrame.setLayout(new GridLayout(0, 1));
 
-      
-        // Label für Frage erstellen
-        questionArea = new JTextArea();
-        questionArea.setEditable(false);
-        questionArea.setLineWrap(true);
-        questionArea.setWrapStyleWord(true);
-        questionArea.setFont(new Font("Monospaced", Font.PLAIN, 12)); // Set the desired font and size
-        questionFrame.getContentPane().add(questionArea);
+        // Frage Nummer Label
+        questionNumberLabel = new JLabel();
+        questionNumberLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        questionNumberLabel.setFont(new Font("Arial", Font.BOLD, 20)); // Schriftgröße für Fragen
+        questionFrame.getContentPane().add(questionNumberLabel);
+
+        // Textbereich für Frage
+        questionTextArea = new JTextArea();
+        questionTextArea.setEditable(false);
+        questionTextArea.setLineWrap(true);
+        questionTextArea.setWrapStyleWord(true);
+        questionTextArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Fragen
+        questionFrame.getContentPane().add(questionTextArea);
 
         // Antwort-Textfeld
         JTextField answerTextField = new JTextField();
         answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
-        answerTextField.setPreferredSize(new Dimension(200, 50)); // Set the size of the answer input field
         answerTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -110,7 +107,7 @@ public class EMSEStudieTest {
         });
         questionFrame.getContentPane().add(answerTextField);
 
-     // Weiter-Button
+        // Weiter-Button
         nextButton = new JButton("Weiter");
         nextButton.setEnabled(false);
         nextButton.addActionListener(new ActionListener() {
@@ -125,7 +122,6 @@ public class EMSEStudieTest {
                 }
             }
         });
-        nextButton.setBounds(350, 400, 200, 50); // Set the position and size of the next button
         questionFrame.getContentPane().add(nextButton);
 
         // Ergebnis Anordnung
@@ -151,12 +147,14 @@ public class EMSEStudieTest {
 
         // Frage anzeigen
         String question = questions.get(currentIndex);
-        questionArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA); // Set syntax highlighting to Java
-        questionArea.setCodeFoldingEnabled(false); // Disable code folding
-        questionArea.setText(question);
+        questionTextArea.setText(question);
+
+        // Frage Nummer anzeigen
+        String questionNumber = "Frage " + (currentIndex + 1);
+        questionNumberLabel.setText(questionNumber);
 
         // Antwort-Textfeld aktivieren
-        JTextField answerTextField = (JTextField) questionFrame.getContentPane().getComponent(1);
+        JTextField answerTextField = (JTextField) questionFrame.getContentPane().getComponent(2);
         answerTextField.setEnabled(true);
         answerTextField.requestFocus();
         answerTextField.setText("");
@@ -168,7 +166,6 @@ public class EMSEStudieTest {
         // Startzeit setzen
         startTime = System.currentTimeMillis();
     }
-
 
     private static void stopTimerAndProceed(String answer) {
         String correctAnswer = answers.get(currentIndex);
