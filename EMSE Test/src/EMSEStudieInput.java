@@ -16,7 +16,7 @@ public class EMSEStudieInput {
     private static int currentIndex = 0;
     private static JFrame mainFrame;
     private static JFrame questionFrame;
-    private static JLabel questionLabel;
+    private static JTextArea questionTextArea; // Modified: Declare as instance variable
     private static JPanel resultPanel;
     private static JButton startButton;
     private static JButton nextButton;
@@ -25,13 +25,13 @@ public class EMSEStudieInput {
 
     public static void main(String[] args) {
         // Fragen und Antworten zur Liste hinzufügen
-        questions.add("<html><font color='blue'><b>Frage 1</b></font></html>");
+        questions.add("Frage 1");
         answers.add("5");
 
-        questions.add("<html><font color='green'>Frage 2</font></html>");
+        questions.add("Frage 2");
         answers.add("7");
 
-        questions.add("<html><font color='red'><i>Frage 3</i></font></html>");
+        questions.add("Frage 3");
         answers.add("3");
 
         // Hauptframe erstellen
@@ -43,11 +43,11 @@ public class EMSEStudieInput {
         JTextArea instructionsArea = new JTextArea();
         instructionsArea.setEditable(false);
         instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
-        		+ "\n \nEs werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
-                + "\n \nBitte zählen Sie (FEHLT NOCH) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
-                + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
-                + "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
-                + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
+                + "\n \n Es werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
+                + "\n \n Bitte zählen Sie (FEHLT NOCH) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
+                + "\n \n Sobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
+                + "\n \n Es werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
+                + "\n \n Um zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
         instructionsArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Instruction-Area 
         instructionsArea.setWrapStyleWord(true);
@@ -79,11 +79,11 @@ public class EMSEStudieInput {
         questionFrame.setLayout(new GridLayout(0, 1));
 
         // Label für Frage erstellen
-        JTextArea questionTextArea = new JTextArea();
+        questionTextArea = new JTextArea(); // Modified: Assign to instance variable
         questionTextArea.setEditable(false);
         questionTextArea.setLineWrap(true);
         questionTextArea.setWrapStyleWord(true);
-        questionTextArea.setFont(new Font("Arial", Font.BOLD, 20));
+        questionTextArea.setFont(new Font("Arial", Font.BOLD, 20)); // Schriftgröße für Fragen
         questionFrame.getContentPane().add(questionTextArea);
 
         // Antwort-Textfeld
@@ -146,7 +146,7 @@ public class EMSEStudieInput {
 
         // Frage anzeigen
         String question = questions.get(currentIndex);
-        questionTextArea.setText(question);
+        questionTextArea.setText(question); // Modified: Use questionTextArea
 
         // Antwort-Textfeld aktivieren
         JTextField answerTextField = (JTextField) questionFrame.getContentPane().getComponent(1);
