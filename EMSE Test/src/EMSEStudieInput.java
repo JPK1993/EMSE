@@ -43,11 +43,11 @@ public class EMSEStudieInput {
         JTextArea instructionsArea = new JTextArea();
         instructionsArea.setEditable(false);
         instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
-        		+ "\n \n Es werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
-                + "\n \n Bitte zählen Sie (FEHLT NOCH) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
-                + "\n \n Sobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
-                + "\n \n Es werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
-                + "\n \n Um zu beginnen, klicken Sie bitte auf 'Start'.");
+        		+ "\n \nEs werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
+                + "\n \nBitte zählen Sie (FEHLT NOCH) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
+                + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
+                + "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
+                + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
         instructionsArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Instruction-Area 
         instructionsArea.setWrapStyleWord(true);
@@ -55,6 +55,8 @@ public class EMSEStudieInput {
 
         // Start-Button
         startButton = new JButton("Start");
+        startButton.setFont(new Font("Arial", Font.BOLD, 20));
+        startButton.setPreferredSize(new Dimension(200, 100)); // Set the size of the start button
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -77,14 +79,18 @@ public class EMSEStudieInput {
         questionFrame.setLayout(new GridLayout(0, 1));
 
         // Label für Frage erstellen
-        questionLabel = new JLabel();
-        questionLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        questionLabel.setFont(new Font("Arial", Font.BOLD, 20)); // Schriftgröße für Fragen
-        questionFrame.getContentPane().add(questionLabel);
+        JTextArea questionTextArea = new JTextArea();
+        questionTextArea.setEditable(false);
+        questionTextArea.setLineWrap(true);
+        questionTextArea.setWrapStyleWord(true);
+        questionTextArea.setFont(new Font("Arial", Font.BOLD, 20));
+        questionFrame.getContentPane().add(questionTextArea);
 
         // Antwort-Textfeld
         JTextField answerTextField = new JTextField();
         answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
+        answerTextField.setFont(new Font("Arial", Font.BOLD, 20));
+        answerTextField.setPreferredSize(new Dimension(200, 100)); // Set the size of the answer input field
         answerTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -100,6 +106,8 @@ public class EMSEStudieInput {
 
         // Weiter-Button
         nextButton = new JButton("Weiter");
+        nextButton.setFont(new Font("Arial", Font.BOLD, 20));
+        nextButton.setPreferredSize(new Dimension(200, 100)); // Set the size of the next button
         nextButton.setEnabled(false);
         nextButton.addActionListener(new ActionListener() {
             @Override
@@ -138,7 +146,7 @@ public class EMSEStudieInput {
 
         // Frage anzeigen
         String question = questions.get(currentIndex);
-        questionLabel.setText(question);
+        questionTextArea.setText(question);
 
         // Antwort-Textfeld aktivieren
         JTextField answerTextField = (JTextField) questionFrame.getContentPane().getComponent(1);
