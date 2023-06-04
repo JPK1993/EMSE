@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
 public class EMSEStudieInput {
-    private static List<String> questions = new ArrayList<>();
+    private static List<Question> questions = new ArrayList<>();
     private static List<String> answers = new ArrayList<>();
     private static List<Double> times = new ArrayList<>();
     private static int currentIndex = 0;
     private static JFrame mainFrame;
     private static JFrame questionFrame;
-    private static JTextArea questionTextArea; // Modified: Declare as instance variable
+    private static RSyntaxTextArea questionTextArea;
     private static JPanel resultPanel;
     private static JButton startButton;
     private static JButton nextButton;
@@ -25,13 +27,28 @@ public class EMSEStudieInput {
 
     public static void main(String[] args) {
         // Fragen und Antworten zur Liste hinzufügen
-        questions.add("Frage 1");
+        questions.add(new Question("public class HelloWorld {\r\n"
+        		+ "    public static void main(String[] args) {\r\n"
+        		+ "        System.out.println(\"Hello, World!\");\r\n"
+        		+ "    }\r\n"
+        		+ "}\r\n"
+        		+ "", true));
         answers.add("5");
 
-        questions.add("Frage 2");
+        questions.add(new Question("public class HelloWorld {\r\n"
+        		+ "    public static void main(String[] args) {\r\n"
+        		+ "        System.out.println(\"Hello, World!\");\r\n"
+        		+ "    }\r\n"
+        		+ "}\r\n"
+        		+ "", false));
         answers.add("7");
 
-        questions.add("Frage 3");
+        questions.add(new Question("public class HelloWorld {\r\n"
+        		+ "    public static void main(String[] args) {\r\n"
+        		+ "        System.out.println(\"Hello, World!\");\r\n"
+        		+ "    }\r\n"
+        		+ "}\r\n"
+        		+ "", true));
         answers.add("3");
 
         // Hauptframe erstellen
@@ -78,13 +95,14 @@ public class EMSEStudieInput {
         questionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         questionFrame.setLayout(new GridLayout(0, 1));
 
-        // Label für Frage erstellen
-        questionTextArea = new JTextArea(); // Modified: Assign to instance variable
+        // Textbereich für Frage erstellen
+        questionTextArea = new RSyntaxTextArea();
+        questionTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        questionTextArea.setCodeFoldingEnabled(false);
         questionTextArea.setEditable(false);
-        questionTextArea.setLineWrap(true);
-        questionTextArea.setWrapStyleWord(true);
-        questionTextArea.setFont(new Font("Arial", Font.BOLD, 20)); // Schriftgröße für Fragen
-        questionFrame.getContentPane().add(questionTextArea);
+        questionTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+        JScrollPane scrollPane = new JScrollPane(questionTextArea);
+        questionFrame.getContentPane().add(scrollPane);
 
         // Antwort-Textfeld
         JTextField answerTextField = new JTextField();
@@ -145,8 +163,9 @@ public class EMSEStudieInput {
         }
 
         // Frage anzeigen
-        String question = questions.get(currentIndex);
-        questionTextArea.setText(question); // Modified: Use questionTextArea
+        Question currentQuestion = questions.get(currentIndex);
+        questionTextArea.setText(currentQuestion.getQuestion());
+        questionTextArea.setSyntaxEditingStyle(currentQuestion.isEnableFormatting() ? SyntaxConstants.SYNTAX_STYLE_JAVA : null);
 
         // Antwort-Textfeld aktivieren
         JTextField answerTextField = (JTextField) questionFrame.getContentPane().getComponent(1);
@@ -182,19 +201,19 @@ public class EMSEStudieInput {
     private static void exportToCSV() {
         // Get the current date and time
         LocalDateTime now = LocalDateTime.now();
-        
+
         // Create a formatter to format the date and time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
-        
+
         // Format the date and time as a string
         String timestamp = now.format(formatter);
 
         // Create the CSV file name with the timestamp
         String csvFile = "recorded_times_" + timestamp + ".csv";
-        
+
         try (FileWriter writer = new FileWriter(csvFile)) {
             for (int i = 0; i < Math.min(questions.size(), times.size()); i++) {
-                String question = questions.get(i);
+                String question = questions.get(i).getQuestion();
                 double time = times.get(i);
                 writer.append(stripHtmlTags(question)).append(",").append(String.valueOf(time)).append("\n");
             }
@@ -204,9 +223,26 @@ public class EMSEStudieInput {
         }
     }
 
-
     // HTML-Code aus Fragestellung entfernen vor dem Speichern
     private static String stripHtmlTags(String html) {
         return html.replaceAll("\\<.*?\\>", "");
+    }
+
+    private static class Question {
+        private String question;
+        private boolean enableFormatting;
+
+        public Question(String question, boolean enableFormatting) {
+            this.question = question;
+            this.enableFormatting = enableFormatting;
+        }
+
+        public String getQuestion() {
+            return question;
+        }
+
+        public boolean isEnableFormatting() {
+            return enableFormatting;
+        }
     }
 }
