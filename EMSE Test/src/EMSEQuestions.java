@@ -43,7 +43,7 @@ public class EMSEQuestions {
         		+ "        System.out.println(\"Odd\");\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", false, "3"));
         
         questions.add(new Question("boolean isRaining = true;\r\n"
         		+ "if (isRaining) {\r\n"
@@ -70,7 +70,7 @@ public class EMSEQuestions {
         		+ "        System.out.println(\"Senior Citizen\");\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", false, "3"));
         
         questions.add(new Question("int x = 10;\r\n"
         		+ "if (x > 0) {\r\n"
@@ -100,7 +100,7 @@ public class EMSEQuestions {
         		+ "} else {\r\n"
         		+ "    System.out.println(\"Both are equal\");\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", false, "3"));
         
         questions.add(new Question("int score = 80;\r\n"
         		+ "if (score >= 90) {\r\n"
@@ -129,7 +129,7 @@ public class EMSEQuestions {
         		+ "        System.out.println(\"Eligible for driving permit\");\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", false, "3"));
         
         questions.add(new Question("int num = 10;\r\n"
         		+ "if (num % 2 == 0) {\r\n"
@@ -153,7 +153,7 @@ public class EMSEQuestions {
         		+ "    System.out.println(\"Non-positive\");\r\n"
         		+ "    System.out.println(\"Number is less than or equal to zero\");\r\n"
         		+ "}\r\n"
-        		+ "3", true, "3"));
+        		+ "3", false, "3"));
         
         
        

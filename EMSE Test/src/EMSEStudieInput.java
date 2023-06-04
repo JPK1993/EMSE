@@ -46,7 +46,7 @@ public class EMSEStudieInput {
                 + "\n \nAufgabe ist es, die Anzahl der IF- und ELSE-Statements innerhalb des gezeigten Codes zu zählen."
                 + "\n \nBitte geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
                 + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
-                + "\n \nÄnderungen sind nachträglich nicht möglich."
+                + "\n \nÄnderungen am eigegebenen Ergebnis sind nachträglich nicht möglich."
                 + "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen mit oder ohne Syntax-Highlighting auszuwerten."
                 + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
