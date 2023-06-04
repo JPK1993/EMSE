@@ -30,15 +30,4 @@ public class EMSEQuestions {
     
         return questions;
     }
-
-//    public static List<String> getAnswers() {
-//        List<String> answers = new ArrayList<>();
-//        
-//        //answers.add("1");
-//
-//        answers.add("2");
-//        answers.add("2");
-//       
-//        return answers;
-//    }
 }
