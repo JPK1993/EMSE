@@ -154,10 +154,8 @@ public class EMSEQuestions {
         		+ "    System.out.println(\"Number is less than or equal to zero\");\r\n"
         		+ "}\r\n"
         		+ "3", false, "3"));
-        
-        
-       
-        
+              
+    
         return questions;
     }
 }
