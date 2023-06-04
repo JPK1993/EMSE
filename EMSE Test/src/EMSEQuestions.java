@@ -25,7 +25,7 @@ public class EMSEQuestions {
         		+ "        }\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", true, "6"));
     
         questions.add(new Question("int num = -7;\r\n"
         		+ "if (num >= 0) {\r\n"
@@ -43,7 +43,7 @@ public class EMSEQuestions {
         		+ "        System.out.println(\"Odd\");\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", false, "3"));
+        		+ "", false, "6"));
         
         questions.add(new Question("boolean isRaining = true;\r\n"
         		+ "if (isRaining) {\r\n"
@@ -70,7 +70,7 @@ public class EMSEQuestions {
         		+ "        System.out.println(\"Senior Citizen\");\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", false, "3"));
+        		+ "", false, "6"));
         
         questions.add(new Question("int x = 10;\r\n"
         		+ "if (x > 0) {\r\n"
@@ -86,7 +86,7 @@ public class EMSEQuestions {
         		+ "} else {\r\n"
         		+ "    System.out.println(\"Zero\");\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", true, "6"));
         
         questions.add(new Question("int num1 = 5;\r\n"
         		+ "int num2 = 10;\r\n"
@@ -100,7 +100,7 @@ public class EMSEQuestions {
         		+ "} else {\r\n"
         		+ "    System.out.println(\"Both are equal\");\r\n"
         		+ "}\r\n"
-        		+ "", false, "3"));
+        		+ "", false, "5"));
         
         questions.add(new Question("int score = 80;\r\n"
         		+ "if (score >= 90) {\r\n"
@@ -115,7 +115,7 @@ public class EMSEQuestions {
         		+ "} else {\r\n"
         		+ "    System.out.println(\"Fail\");\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", true, "7"));
         
         questions.add(new Question("int age = 25;\r\n"
         		+ "if (age >= 18) {\r\n"
@@ -129,7 +129,7 @@ public class EMSEQuestions {
         		+ "        System.out.println(\"Eligible for driving permit\");\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", false, "3"));
+        		+ "", false, "4"));
         
         questions.add(new Question("int num = 10;\r\n"
         		+ "if (num % 2 == 0) {\r\n"
@@ -143,7 +143,7 @@ public class EMSEQuestions {
         		+ "        System.out.println(\"Less than 10\");\r\n"
         		+ "    }\r\n"
         		+ "}\r\n"
-        		+ "", true, "3"));
+        		+ "", true, "4"));
         
         questions.add(new Question("int x = 5;\r\n"
         		+ "if (x > 0) {\r\n"
@@ -153,7 +153,7 @@ public class EMSEQuestions {
         		+ "    System.out.println(\"Non-positive\");\r\n"
         		+ "    System.out.println(\"Number is less than or equal to zero\");\r\n"
         		+ "}\r\n"
-        		+ "3", false, "3"));
+        		+ "3", false, "2"));
               
     
         return questions;

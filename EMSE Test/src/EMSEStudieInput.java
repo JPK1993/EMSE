@@ -243,7 +243,6 @@ public class EMSEStudieInput {
         nextButton = new JButton("Weiter");
         nextButton.setFont(new Font("Arial", Font.BOLD, 20));	//Schriftformatierung
         nextButton.setPreferredSize(new Dimension(1000, 80)); 	//Größe des Buttons
-        nextButton.setEnabled(false);
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -254,6 +253,7 @@ public class EMSEStudieInput {
                     exportToCSV();
                     questionFrame.dispose();
                 }
+                nextButton.setEnabled(false);
             }
         });
         questionFrame.getContentPane().add(nextButton, BorderLayout.SOUTH); // Next Button zum Question Frame hinzufügen
@@ -269,7 +269,7 @@ public class EMSEStudieInput {
 
     
     private static void displayNextQuestion() {
-        inputRecorded = false; // Reset input flag
+       
         // Ergebnis löschen
         if (resultPanel != null) {
             resultPanel.removeAll();
@@ -290,15 +290,19 @@ public class EMSEStudieInput {
         answerTextField.setEnabled(true);
         answerTextField.requestFocus();
         answerTextField.setText("");
-
+        
         // Neuaufbau der Oberfläche um Änderungen leichter sichtbar zu machen
         
         questionFrame.revalidate();
         questionFrame.repaint();
-
+  
         // Startzeit setzen
         
         startTime = System.currentTimeMillis();
+        
+        //Reset input flag
+        
+        inputRecorded = false; // Reset input recorded flag for button functionality
     }
     
     // Timer anhalten und auf richtige Antwort prüfen
