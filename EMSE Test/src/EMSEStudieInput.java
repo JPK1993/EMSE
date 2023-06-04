@@ -190,6 +190,13 @@ public class EMSEStudieInput {
         String csvFile = "recorded_times_" + timestamp + ".csv";
 
         try (FileWriter writer = new FileWriter(csvFile)) {
+        	
+        	// Write the header row
+            writer.append("Highlighting,Time\n");
+            
+            //Write the data rows
+        	
+        	
             for (int i = 0; i < Math.min(questions.size(), times.size()); i++) {
                 boolean enableFormatting = questions.get(i).isEnableFormatting();
                 double time = times.get(i);
