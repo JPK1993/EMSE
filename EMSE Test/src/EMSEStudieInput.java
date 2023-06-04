@@ -26,13 +26,16 @@ public class EMSEStudieInput {
     private static boolean inputRecorded = false;
 
     public static void main(String[] args) {
+    	
+    	//Fragen aus EMSEQuestions.java importieren
+    	
         questions = EMSEQuestions.getQuestions();
 
-        // Hauptframe erstellen
+        // Hauptframe erstellen (Erste Seite)
         
         mainFrame = new JFrame("EMSE Studie");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setLayout(new BorderLayout());
+        mainFrame.setLayout(new BorderLayout());					//Border-Layout festlegen für Main Frame
 
         // Textbereich für Anweisungen
         
@@ -40,10 +43,11 @@ public class EMSEStudieInput {
         instructionsArea.setEditable(false);
         instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
                 + "\n \nEs werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
-                + "\n \nEs wird jeweils eine Variable a definiert, die im Verlauf des Codes unterschiedlich oft verwendet wird."
-                + "\n \nBitte zählen Sie, wie oft die Variable verwendet wird (abzüglich der Deklaration) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
+                + "\n \nAufgabe ist es, die Anzahl der IF- und ELSE-Statements innerhalb des gezeigten Codes zu zählen."
+                + "\n \nBitte geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
                 + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
-                + "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
+                + "\n \nÄnderungen sind nachträglich nicht möglich."
+                + "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen mit oder ohne Syntax-Highlighting auszuwerten."
                 + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
         instructionsArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Instruction-Area
@@ -64,42 +68,163 @@ public class EMSEStudieInput {
         });
         mainFrame.add(startButton, BorderLayout.SOUTH);
 
-        // Hauptframe anzeigen
+        // Hauptframe formatieren und anzeigen
         
-        mainFrame.setSize(1000, 1000); //Größe
+        mainFrame.setSize(1000, 1000); //Größe des Hauptframes mit Instruction Area und Weiter-Button (HxB)
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
     }
 
+    
+//    private static void openQuestionFrame() {
+//        // Frage-Frame erstellen
+//        questionFrame = new JFrame("EMSE Studie - Frage");
+//        questionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        questionFrame.setLayout(new GridLayout(0, 1));	//Grid Layout Festlegen für Question Frame
+//        
+//
+//        // Textbereich für Frage erstellen
+//        questionTextArea = new RSyntaxTextArea();
+//        questionTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+//        questionTextArea.setCodeFoldingEnabled(false);
+//        questionTextArea.setEditable(false);
+//        questionTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+//
+//       
+//        questionFrame.getContentPane().add(questionTextArea); // Textarea zum Question Frame hinzufügen
+//     
+//        // Antwort-Textfeld
+//        JTextField answerTextField = new JTextField();
+//        answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
+//        answerTextField.setFont(new Font("Arial", Font.BOLD, 20));
+//        answerTextField.setPreferredSize(new Dimension(200, 30)); // Set the size of the answer input field
+//        answerTextField.addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//                char inputChar = e.getKeyChar();
+//                if (Character.isDigit(inputChar) && !inputRecorded) {
+//                    String answer = String.valueOf(inputChar);
+//                    stopTimerAndProceed(answer);
+//                    inputRecorded = true;
+//                }
+//            }
+//        });
+//        questionFrame.getContentPane().add(answerTextField); //Antwortfeld zum Question Frame hinzufügen
+//
+//        // Weiter-Button
+//        nextButton = new JButton("Weiter");
+//        nextButton.setFont(new Font("Arial", Font.BOLD, 20));
+//        nextButton.setPreferredSize(new Dimension(200, 30)); // Set the size of the next button
+//        nextButton.setEnabled(false);
+//        nextButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                currentIndex++;
+//                if (currentIndex < questions.size()) {
+//                    displayNextQuestion();
+//                } else {
+//                    exportToCSV();
+//                    questionFrame.dispose();
+//                }
+//            }
+//        });
+//        questionFrame.getContentPane().add(nextButton); //Next Button zum Question Frame hinzufügen
+//
+//       
+//        // Frage-Frame formatieren und anzeigen
+//        questionFrame.setSize(1000, 1000); //Gesamtgröße
+//        questionFrame.setLocationRelativeTo(null);
+//        questionFrame.setVisible(true);
+//
+//        // Erste Frage anzeigen
+//        displayNextQuestion();
+//    }
+    
+    
+//    private static void openQuestionFrame() {
+//        // Frage-Frame erstellen
+//        questionFrame = new JFrame("EMSE Studie - Frage");
+//        questionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        questionFrame.setLayout(new BoxLayout(questionFrame.getContentPane(), BoxLayout.Y_AXIS));
+//
+//        // Textbereich für Frage erstellen
+//        questionTextArea = new RSyntaxTextArea();
+//        questionTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+//        questionTextArea.setCodeFoldingEnabled(false);
+//        questionTextArea.setEditable(false);
+//        questionTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
+//
+//        questionFrame.getContentPane().add(questionTextArea); // Textarea zum Question Frame hinzufügen
+//
+//        // Antwort-Textfeld
+//        JTextField answerTextField = new JTextField();
+//        answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
+//        answerTextField.setFont(new Font("Arial", Font.BOLD, 20));
+//        answerTextField.setPreferredSize(new Dimension(200, 30)); // Set the size of the answer input field
+//        answerTextField.addKeyListener(new KeyAdapter() {
+//            @Override
+//            public void keyPressed(KeyEvent e) {
+//                char inputChar = e.getKeyChar();
+//                if (Character.isDigit(inputChar) && !inputRecorded) {
+//                    String answer = String.valueOf(inputChar);
+//                    stopTimerAndProceed(answer);
+//                    inputRecorded = true;
+//                }
+//            }
+//        });
+//        questionFrame.getContentPane().add(answerTextField); // Antwortfeld zum Question Frame hinzufügen
+//
+//        // Weiter-Button
+//        nextButton = new JButton("Weiter");
+//        nextButton.setFont(new Font("Arial", Font.BOLD, 20));
+//        nextButton.setPreferredSize(new Dimension(200, 30)); // Set the size of the next button
+//        nextButton.setEnabled(false);
+//        nextButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                currentIndex++;
+//                if (currentIndex < questions.size()) {
+//                    displayNextQuestion();
+//                } else {
+//                    exportToCSV();
+//                    questionFrame.dispose();
+//                }
+//            }
+//        });
+//        questionFrame.getContentPane().add(nextButton); // Next Button zum Question Frame hinzufügen
+//
+//        // Frage-Frame formatieren und anzeigen
+//        questionFrame.pack();
+//        questionFrame.setSize(1000, 1000); //Gesamtgöße
+//        questionFrame.setLocationRelativeTo(null);
+//        questionFrame.setVisible(true);
+//
+//        // Erste Frage anzeigen
+//        displayNextQuestion();
+//    }
+    
+    
     private static void openQuestionFrame() {
-    	
         // Frage-Frame erstellen
-    	
         questionFrame = new JFrame("EMSE Studie - Frage");
         questionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        questionFrame.setLayout(new GridLayout(0, 1));
+        questionFrame.setLayout(new BorderLayout());
 
         // Textbereich für Frage erstellen
-        
         questionTextArea = new RSyntaxTextArea();
         questionTextArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         questionTextArea.setCodeFoldingEnabled(false);
         questionTextArea.setEditable(false);
-        questionTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
-        //questionTextArea.setPreferredSize(new Dimension(600, 200)); // Set the size of the question text area
-        JScrollPane scrollPane = new JScrollPane(questionTextArea);
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPane.setPreferredSize(new Dimension(1000, 1000)); // Set the size of the scroll pane
+        questionTextArea.setPreferredSize(new Dimension(1000,800));
+        questionTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 
-        questionFrame.getContentPane().add(scrollPane);
+        questionFrame.getContentPane().add(questionTextArea, BorderLayout.NORTH); // Textarea zum Question Frame hinzufügen
 
-        // Antwort-Textfeld erstellen
-        
+        // Antwort-Textfeld
         JTextField answerTextField = new JTextField();
         answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
         answerTextField.setFont(new Font("Arial", Font.BOLD, 20));
-        answerTextField.setPreferredSize(new Dimension(1000, 50)); // Set the size of the answer input field
+        //answerTextField.setPreferredSize(new Dimension(1000, 150)); // Center nimmt immer den restlichen verfügbaren Platz ein!
         answerTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -111,13 +236,12 @@ public class EMSEStudieInput {
                 }
             }
         });
-        questionFrame.getContentPane().add(answerTextField);
+        questionFrame.getContentPane().add(answerTextField, BorderLayout.CENTER); // Antwortfeld zum Question Frame hinzufügen
 
-        // Weiter-Button erstellen
-        
+        // Weiter-Button
         nextButton = new JButton("Weiter");
-        nextButton.setFont(new Font("Arial", Font.BOLD, 20));
-        nextButton.setPreferredSize(new Dimension(1000, 50)); // Set the size of the next button
+        nextButton.setFont(new Font("Arial", Font.BOLD, 20));	//Schriftformatierung
+        nextButton.setPreferredSize(new Dimension(1000, 80)); 	//Größe des Buttons
         nextButton.setEnabled(false);
         nextButton.addActionListener(new ActionListener() {
             @Override
@@ -131,25 +255,18 @@ public class EMSEStudieInput {
                 }
             }
         });
-        questionFrame.getContentPane().add(nextButton);
+        questionFrame.getContentPane().add(nextButton, BorderLayout.SOUTH); // Next Button zum Question Frame hinzufügen
 
-        // Ergebnis Anordnung
-        
-        resultPanel = new JPanel();
-        resultPanel.setLayout(new GridLayout(0, 1));
-        questionFrame.getContentPane().add(resultPanel);
-
-        // Frage-Frame anzeigen
-        
-        questionFrame.setSize(1000, 1000);
-        questionFrame.setLocationRelativeTo(null);
-        questionFrame.setVisible(true);
+        // Frage-Frame formatieren und anzeigen
+        questionFrame.setSize(1000, 1000); // Gesamtgröße
+        questionFrame.setLocationRelativeTo(null); //Position
+        questionFrame.setVisible(true); //Sichtbar
 
         // Erste Frage anzeigen
-        
         displayNextQuestion();
     }
 
+    
     private static void displayNextQuestion() {
         inputRecorded = false; // Reset input flag
         // Ergebnis löschen
