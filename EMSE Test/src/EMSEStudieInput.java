@@ -54,7 +54,7 @@ public class EMSEStudieInput {
         
         startButton = new JButton("Start");
         startButton.setFont(new Font("Arial", Font.BOLD, 20)); //Schriftformat
-        startButton.setPreferredSize(new Dimension(200, 100)); //Buttongröße
+        startButton.setPreferredSize(new Dimension(1000, 50)); //Buttongröße
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -86,7 +86,12 @@ public class EMSEStudieInput {
         questionTextArea.setCodeFoldingEnabled(false);
         questionTextArea.setEditable(false);
         questionTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+        //questionTextArea.setPreferredSize(new Dimension(600, 200)); // Set the size of the question text area
         JScrollPane scrollPane = new JScrollPane(questionTextArea);
+        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setPreferredSize(new Dimension(1000, 1000)); // Set the size of the scroll pane
+
         questionFrame.getContentPane().add(scrollPane);
 
         // Antwort-Textfeld erstellen
@@ -94,7 +99,7 @@ public class EMSEStudieInput {
         JTextField answerTextField = new JTextField();
         answerTextField.setHorizontalAlignment(SwingConstants.CENTER);
         answerTextField.setFont(new Font("Arial", Font.BOLD, 20));
-        answerTextField.setPreferredSize(new Dimension(200, 100)); // Set the size of the answer input field
+        answerTextField.setPreferredSize(new Dimension(1000, 50)); // Set the size of the answer input field
         answerTextField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -112,7 +117,7 @@ public class EMSEStudieInput {
         
         nextButton = new JButton("Weiter");
         nextButton.setFont(new Font("Arial", Font.BOLD, 20));
-        nextButton.setPreferredSize(new Dimension(200, 100)); // Set the size of the next button
+        nextButton.setPreferredSize(new Dimension(1000, 50)); // Set the size of the next button
         nextButton.setEnabled(false);
         nextButton.addActionListener(new ActionListener() {
             @Override
