@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
+
+
 public class EMSEStudieInput {
     private static List<Question> questions = new ArrayList<>();
     private static List<String> answers = new ArrayList<>();
@@ -25,31 +27,11 @@ public class EMSEStudieInput {
     private static long startTime;
     private static boolean inputRecorded = false;
 
+   
     public static void main(String[] args) {
-        // Fragen und Antworten zur Liste hinzufügen
-        questions.add(new Question("public class HelloWorld {\r\n"
-        		+ "    public static void main(String[] args) {\r\n"
-        		+ "        System.out.println(\"Hello, World!\");\r\n"
-        		+ "    }\r\n"
-        		+ "}\r\n"
-        		+ "", true));
-        answers.add("5");
-
-        questions.add(new Question("public class HelloWorld {\r\n"
-        		+ "    public static void main(String[] args) {\r\n"
-        		+ "        System.out.println(\"Hello, World!\");\r\n"
-        		+ "    }\r\n"
-        		+ "}\r\n"
-        		+ "", false));
-        answers.add("7");
-
-        questions.add(new Question("public class HelloWorld {\r\n"
-        		+ "    public static void main(String[] args) {\r\n"
-        		+ "        System.out.println(\"Hello, World!\");\r\n"
-        		+ "    }\r\n"
-        		+ "}\r\n"
-        		+ "", true));
-        answers.add("3");
+    
+        questions = EMSEQuestions.getQuestions();
+        answers = EMSEQuestions.getAnswers();
 
         // Hauptframe erstellen
         mainFrame = new JFrame("EMSE Studie");
@@ -88,6 +70,7 @@ public class EMSEStudieInput {
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setVisible(true);
     }
+
 
     private static void openQuestionFrame() {
         // Frage-Frame erstellen
@@ -201,21 +184,21 @@ public class EMSEStudieInput {
     private static void exportToCSV() {
         // Get the current date and time
         LocalDateTime now = LocalDateTime.now();
-
+        
         // Create a formatter to format the date and time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
-
+        
         // Format the date and time as a string
         String timestamp = now.format(formatter);
 
         // Create the CSV file name with the timestamp
         String csvFile = "recorded_times_" + timestamp + ".csv";
-
+        
         try (FileWriter writer = new FileWriter(csvFile)) {
             for (int i = 0; i < Math.min(questions.size(), times.size()); i++) {
-                String question = questions.get(i).getQuestion();
+                boolean enableFormatting = questions.get(i).isEnableFormatting();
                 double time = times.get(i);
-                writer.append(stripHtmlTags(question)).append(",").append(String.valueOf(time)).append("\n");
+                writer.append(String.valueOf(enableFormatting)).append(",").append(String.valueOf(time)).append("\n");
             }
             System.out.println("CSV file has been created successfully!");
         } catch (IOException e) {
@@ -223,26 +206,11 @@ public class EMSEStudieInput {
         }
     }
 
+
     // HTML-Code aus Fragestellung entfernen vor dem Speichern
     private static String stripHtmlTags(String html) {
         return html.replaceAll("\\<.*?\\>", "");
     }
 
-    private static class Question {
-        private String question;
-        private boolean enableFormatting;
-
-        public Question(String question, boolean enableFormatting) {
-            this.question = question;
-            this.enableFormatting = enableFormatting;
-        }
-
-        public String getQuestion() {
-            return question;
-        }
-
-        public boolean isEnableFormatting() {
-            return enableFormatting;
-        }
-    }
+   
 }
