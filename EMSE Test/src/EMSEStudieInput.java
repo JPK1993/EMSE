@@ -26,8 +26,8 @@ public class EMSEStudieInput {
     private static JButton nextButton;
     private static long startTime;
     private static boolean inputRecorded = false;
+ 
 
-   
     public static void main(String[] args) {
     
         questions = EMSEQuestions.getQuestions();
@@ -42,11 +42,12 @@ public class EMSEStudieInput {
         JTextArea instructionsArea = new JTextArea();
         instructionsArea.setEditable(false);
         instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
-                + "\n \n Es werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
-                + "\n \n Bitte zählen Sie (FEHLT NOCH) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
-                + "\n \n Sobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
-                + "\n \n Es werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
-                + "\n \n Um zu beginnen, klicken Sie bitte auf 'Start'.");
+        		+ "\n \nEs werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
+                + "\n \nEs wird jeweils eine Variable a definiert, die im Verlauf des Codes unterschiedlich oft verwendet wird."
+                + "\n \nBitte zählen Sie, wie oft die Variable verwendet wird (abzüglich der Deklaration) und geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 ein."
+                + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
+                + "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen auszuwerten."
+                + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
         instructionsArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Instruction-Area 
         instructionsArea.setWrapStyleWord(true);

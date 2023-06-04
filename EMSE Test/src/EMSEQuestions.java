@@ -5,41 +5,40 @@ public class EMSEQuestions {
     public static List<Question> getQuestions() {
         List<Question> questions = new ArrayList<>();
 
-        questions.add(new Question("public class HelloWorld {\r\n"
-                + "    public static void main(String[] args) {\r\n"
-                + "        System.out.println(\"Hello, World!\");\r\n"
-                + "    }\r\n"
-                + "}\r\n"
-                + "", true));
-
-        questions.add(new Question("public class Foo {\r\n"
-                + "    public static void main(String[] args) {\r\n"
-                + "        int x = 5;\r\n"
-                + "        int y = 10;\r\n"
-                + "        int sum = x + y;\r\n"
-                + "        System.out.println(\"Sum: \" + sum);\r\n"
-                + "    }\r\n"
-                + "}\r\n"
-                + "", false));
-
-        questions.add(new Question("public class Bar {\r\n"
-                + "    public static void main(String[] args) {\r\n"
-                + "        String message = \"Hello, World!\";\r\n"
-                + "        System.out.println(message);\r\n"
-                + "    }\r\n"
-                + "}\r\n"
-                + "", true));
-
+       // questions.add(new Question("FRAGE", true, "ANTWORT"));
+        
+        questions.add(new Question("// Syntax Highlighting Enabled\r\n"
+        		+ "int count = 0;\r\n"
+        		+ "for (int i = 0; i < 10; i++) {\r\n"
+        		+ "    if (i % 2 == 0) {\r\n"
+        		+ "        count++;\r\n"
+        		+ "    }\r\n"
+        		+ "}\r\n"
+        		+ "System.out.println(\"Count of even numbers: \" + count);\r\n"
+        		+ "", true, "3"));
+    
+        questions.add(new Question("// Syntax Highlighting Disabled\r\n"
+        		+ "int count = 0;\r\n"
+        		+ "for (int i = 0; i < 10; i++) {\r\n"
+        		+ "    if (i % 2 == 0) {\r\n"
+        		+ "        count++;\r\n"
+        		+ "    }\r\n"
+        		+ "}\r\n"
+        		+ "System.out.println(\"Count of even numbers: \" + count);\r\n"
+        		+ "", false, "3"));
+        
+    
         return questions;
     }
 
-    public static List<String> getAnswers() {
-        List<String> answers = new ArrayList<>();
-
-        answers.add("5");
-        answers.add("7");
-        answers.add("3");
-
-        return answers;
-    }
+//    public static List<String> getAnswers() {
+//        List<String> answers = new ArrayList<>();
+//        
+//        //answers.add("1");
+//
+//        answers.add("2");
+//        answers.add("2");
+//       
+//        return answers;
+//    }
 }
