@@ -52,7 +52,8 @@ public class EMSEStudieInput {
         instructionsArea.setLineWrap(true);
         instructionsArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Instruction-Area
         instructionsArea.setWrapStyleWord(true);
-        mainFrame.add(instructionsArea, BorderLayout.CENTER);
+        
+        mainFrame.add(instructionsArea, BorderLayout.CENTER); //Instruction Area zum Main Frame hinzufügen
 
         // Start-Button
         
@@ -66,13 +67,13 @@ public class EMSEStudieInput {
                 openQuestionFrame();
             }
         });
-        mainFrame.add(startButton, BorderLayout.SOUTH);
+        mainFrame.add(startButton, BorderLayout.SOUTH); //Start Button zum Main Frame hinzufügen
 
         // Hauptframe formatieren und anzeigen
         
         mainFrame.setSize(1000, 1000); //Größe des Hauptframes mit Instruction Area und Weiter-Button (HxB)
-        mainFrame.setLocationRelativeTo(null);
-        mainFrame.setVisible(true);
+        mainFrame.setLocationRelativeTo(null); //Position
+        mainFrame.setVisible(true); //Sichtbarkeit
     }
 
     
