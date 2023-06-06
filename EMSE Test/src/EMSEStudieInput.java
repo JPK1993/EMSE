@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
+//import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -132,7 +132,7 @@ public class EMSEStudieInput {
                 nextButton.setEnabled(false);
             }
         });
-        questionFrame.getContentPane().add(nextButton, BorderLayout.SOUTH); // Next Button zum Question Frame hinzufügen
+        questionFrame.getContentPane().add(nextButton, BorderLayout.SOUTH); // Next Button zum Questionframe hinzufügen
 
         // Frage-Frame formatieren und anzeigen
         questionFrame.setSize(1000, 1000); // Gesamtgröße
@@ -146,9 +146,7 @@ public class EMSEStudieInput {
     
     private static void displayNextQuestion() {
        
-    	
-    	
-        // Ergebnis löschen
+        // Ergebnisfeld leeren
         if (resultPanel != null) {
             resultPanel.removeAll();
         }
@@ -176,9 +174,9 @@ public class EMSEStudieInput {
         
         startTime = System.currentTimeMillis();
         
-        //Reset input flag
+        //Input-Flag zurücksetzen
         
-        inputRecorded = false; // Reset input recorded flag for button functionality
+        inputRecorded = false;
         
         //"Weiter" Button ausschalten bis Antwort eingegeben wurde
         

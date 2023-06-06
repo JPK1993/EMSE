@@ -1,7 +1,7 @@
 public class Question {
     private String question;
     private boolean enableFormatting;
-    private String answer;
+    private String answer = "0";
     private int lineCount;
 
     public Question(String question, boolean enableFormatting, String answer) {

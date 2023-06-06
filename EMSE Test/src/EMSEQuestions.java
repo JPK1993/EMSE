@@ -318,6 +318,8 @@ public class EMSEQuestions {
         		+ "}\r\n"
         		+ "", false, "9"));
         
+        //Aufruf der Zählmethoden für Antwortgenerierung und Zeilen
+        
         
         for (Question question: questions) {
         	int lineCount = countLines(question.getQuestion());
@@ -325,15 +327,16 @@ public class EMSEQuestions {
         }
         
         
-//        for (Question question : questions) {
-//            int ifCount = countOccurrences(question.getQuestion(), "if");
-//            int elseCount = countOccurrences(question.getQuestion(), "else");
-//            question.setAnswer(String.valueOf(ifCount) + String.valueOf(elseCount));
-//        }
+        for (Question question : questions) {
+            int count = countKeywords(question.getQuestion());           
+            question.setAnswer(String.valueOf(count));
+        }
         
         
         return questions;
     }
+    
+    //Zeilen der Fragen zählen zu statistischen Zwecken
     
     private static int countLines(String text) {
         if (text == null || text.isEmpty()) {
@@ -344,19 +347,23 @@ public class EMSEQuestions {
         return lines.length;
     }
     
+    //Wörter 'if' und 'else' zählen um korrekte Antworten zu berechnen (testweise)
     
-    private static int countOccurrences(String text, String word) {
+    
+    public static int countKeywords(String questionText) {
         int count = 0;
-        int index = 0;
-        while (index != -1) {
-            index = text.indexOf(word, index);
-            if (index != -1) {
+        String lowercaseText = questionText.toLowerCase();
+        String[] words = lowercaseText.split("\\W+");
+        
+        for (String word : words) {
+            if (word.equals("if") || word.equals("else")) {
                 count++;
-                index += word.length();
             }
         }
+        
         return count;
     }
+
 
     
     
