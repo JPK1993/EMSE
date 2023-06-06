@@ -227,14 +227,15 @@ public class EMSEStudieInput {
         	
         	// Erste Zeile (überschrift)
         	
-            writer.append("Highlighting,Time\n");
+            writer.append("Highlighting,Time, Count\n");
             
             //Zeilen mit Messwerten
         	
             for (int i = 0; i < Math.min(questions.size(), times.size()); i++) {
-                boolean enableFormatting = questions.get(i).isEnableFormatting();
+            	boolean enableFormatting = questions.get(i).isEnableFormatting();
                 double time = times.get(i);
-                writer.append(String.valueOf(enableFormatting)).append(",").append(String.valueOf(time)).append("\n");
+                int lineCount = questions.get(i).getLineCount();
+                writer.append(String.valueOf(enableFormatting)).append(",").append(String.valueOf(time)).append(",").append(String.valueOf(lineCount)).append("\n");         
             }
             System.out.println("CSV Datei erstellt!");
         } catch (IOException e) {

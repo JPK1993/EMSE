@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EMSEQuestions {
+	
     public static List<Question> getQuestions() {
         List<Question> questions = new ArrayList<>();
 
@@ -318,10 +319,23 @@ public class EMSEQuestions {
         		+ "", false, "9"));
         
         
+        for (Question question: questions) {
+        	int lineCount = countLines(question.getQuestion());
+        	question.setLineCount(lineCount);
+        }
         
-        
-              
-    
         return questions;
     }
+    
+    private static int countLines(String text) {
+        if (text == null || text.isEmpty()) {
+            return 0;
+        }
+        
+        String[] lines = text.split("\r\n|\r|\n");
+        return lines.length;
+    }
+
+    
+    
 }
