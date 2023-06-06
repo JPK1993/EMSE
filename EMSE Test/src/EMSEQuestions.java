@@ -194,7 +194,7 @@ public class EMSEQuestions {
         		+ "} else {\r\n"
         		+ "    System.out.println(\"Minor\");\r\n"
         		+ "}\r\n"
-        		+ "", true, "41"));
+        		+ "", true, "4"));
         
         questions.add(new Question("int score = 80;\r\n"
         		+ "if (score >= 90) {\r\n"
@@ -324,6 +324,14 @@ public class EMSEQuestions {
         	question.setLineCount(lineCount);
         }
         
+        
+//        for (Question question : questions) {
+//            int ifCount = countOccurrences(question.getQuestion(), "if");
+//            int elseCount = countOccurrences(question.getQuestion(), "else");
+//            question.setAnswer(String.valueOf(ifCount) + String.valueOf(elseCount));
+//        }
+        
+        
         return questions;
     }
     
@@ -334,6 +342,20 @@ public class EMSEQuestions {
         
         String[] lines = text.split("\r\n|\r|\n");
         return lines.length;
+    }
+    
+    
+    private static int countOccurrences(String text, String word) {
+        int count = 0;
+        int index = 0;
+        while (index != -1) {
+            index = text.indexOf(word, index);
+            if (index != -1) {
+                count++;
+                index += word.length();
+            }
+        }
+        return count;
     }
 
     

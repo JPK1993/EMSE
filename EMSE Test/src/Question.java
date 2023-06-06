@@ -19,6 +19,10 @@ public class Question {
         return enableFormatting;
     }
     
+    public void setAnswer(String answer) {
+    	this.answer = answer;
+    }
+    
     public String getAnswer() {
     	return answer;
     }
