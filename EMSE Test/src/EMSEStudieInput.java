@@ -69,7 +69,7 @@ public class EMSEStudieInput {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mainFrame.dispose();
-                openQuestionFrame();
+                openQuestionFrame();              
             }
         });
         mainFrame.add(startButton, BorderLayout.SOUTH); //Start Button zum Main Frame hinzufügen
@@ -146,11 +146,14 @@ public class EMSEStudieInput {
     
     private static void displayNextQuestion() {
        
+    	
+    	
         // Ergebnis löschen
         if (resultPanel != null) {
             resultPanel.removeAll();
         }
-
+        
+        
         // Frage anzeigen
        
         Question currentQuestion = questions.get(currentIndex);
@@ -176,6 +179,12 @@ public class EMSEStudieInput {
         //Reset input flag
         
         inputRecorded = false; // Reset input recorded flag for button functionality
+        
+        //"Weiter" Button ausschalten bis Antwort eingegeben wurde
+        
+        nextButton.setEnabled(false);
+        
+        
     }
     
     // Timer anhalten und auf richtige Antwort prüfen
