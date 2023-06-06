@@ -51,7 +51,7 @@ public class EMSEStudieInput {
                 + "\n \nBitte geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 auf der Tastatur ein."
                 + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
                 + "\n \nÄnderungen am eingegebenen Ergebnis sind nachträglich nicht möglich."
-                + "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen mit oder ohne Syntax-Highlighting auszuwerten."
+                //+ "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen mit oder ohne Syntax-Highlighting auszuwerten."
                 + "\n \nBitte legen sie eine Hand auf die Tastatur und die andere auf die Maus, um die Eingabeverzögerung möglichst klein zu halten."
                 + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
