@@ -225,7 +225,7 @@ public class EMSEStudieInput {
         	
         	// Erste Zeile (überschrift)
         	
-            writer.append("Highlighting,Time, Count\n");
+            writer.append("Highlighting,Time,Count\n");
             
             //Zeilen mit Messwerten
         	
