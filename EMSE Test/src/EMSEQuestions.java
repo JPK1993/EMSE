@@ -318,7 +318,7 @@ public class EMSEQuestions {
         		+ "}\r\n"
         		+ "", false, "9"));
         
-        //Aufruf der Zählmethoden für Antwortgenerierung und Zeilen
+        //Aufruf der Zählmethoden für Antwortgenerierung und Zeilenzahl
         
         
         for (Question question: questions) {
