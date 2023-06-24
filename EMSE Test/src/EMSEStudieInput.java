@@ -225,7 +225,7 @@ public class EMSEStudieInput {
         	
         	// Erste Zeile (überschrift)
         	
-            writer.append("Highlighting,Time,Count\n");
+            writer.append("Highlighting,Time,Count,Indentation\n");
             
             //Zeilen mit Messwerten
         	
@@ -233,7 +233,9 @@ public class EMSEStudieInput {
             	boolean enableFormatting = questions.get(i).isEnableFormatting();
                 double time = times.get(i);
                 int lineCount = questions.get(i).getLineCount();
-                writer.append(String.valueOf(enableFormatting)).append(",").append(String.valueOf(time)).append(",").append(String.valueOf(lineCount)).append("\n");         
+                boolean indented = questions.get(i).getindented();              
+                writer.append(String.valueOf(enableFormatting)).append(",").append(String.valueOf(time)).append(",").append(String.valueOf(lineCount)).append(",").append(String.valueOf(indented)).append("\n");         
+
             }
             System.out.println("CSV Datei erstellt!");
         } catch (IOException e) {
