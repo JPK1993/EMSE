@@ -155,8 +155,8 @@ public class EMSEStudieInput {
         // Frage anzeigen
        
         Question currentQuestion = questions.get(currentIndex);
-        questionTextArea.setText(currentQuestion.getQuestion());
-        questionTextArea.setSyntaxEditingStyle(currentQuestion.isEnableFormatting() ? SyntaxConstants.SYNTAX_STYLE_JAVA : null);
+        questionTextArea.setText(currentQuestion.getQuestion()); //Text aus der Frage holen
+        questionTextArea.setSyntaxEditingStyle(currentQuestion.isEnableFormatting() ? SyntaxConstants.SYNTAX_STYLE_JAVA : null); // Information, ob Highlighting eingeschaltet werden soll aus der Frage holen
 
         // Antwort-Textfeld aktivieren
         
