@@ -20,6 +20,18 @@ public class SortedQuestions {
         				+ ""
         		, true, true));
         
+        questions.add(new Question //3
+        		("int x = 10;\r\n"
+        				+ "if (x > 10) {\r\n"
+        				+ "    System.out.println(\"x is greater than 10\");\r\n"
+        				+ "} else if (x < 10) {\r\n"
+        				+ "    System.out.println(\"x is less than 10\");\r\n"
+        				+ "} else {\r\n"
+        				+ "    System.out.println(\"x is equal to 10\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, true, true));
+        
         
         //Fragen eingerückt ohne Highlighting:
         
@@ -29,6 +41,18 @@ public class SortedQuestions {
         				+ "    System.out.println(\"The number is less than 10\");\r\n"
         				+ "} else if (num > 20) {\r\n"
         				+ "    System.out.println(\"The number is greater than 20\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, false, true));
+        
+        questions.add(new Question //3
+        		("int score = 75;\r\n"
+        				+ "if (score >= 90) {\r\n"
+        				+ "    System.out.println(\"Excellent!\");\r\n"
+        				+ "} else if (score >= 70) {\r\n"
+        				+ "    System.out.println(\"Good job!\");\r\n"
+        				+ "} else {\r\n"
+        				+ "    System.out.println(\"Keep working hard!\");\r\n"
         				+ "}\r\n"
         				+ ""
         		, false, true));
@@ -45,6 +69,18 @@ public class SortedQuestions {
         				+ ""
         		, true, false));
         
+        questions.add(new Question //3
+        		("int num = 7;\r\n"
+        				+ "if (num % 2 == 0) {\r\n"
+        				+ "System.out.println(\"The number is even\");\r\n"
+        				+ "} else if (num % 3 == 0) {\r\n"
+        				+ "System.out.println(\"The number is divisible by 3\");\r\n"
+        				+ "} else {\r\n"
+        				+ "System.out.println(\"The number is neither even nor divisible by 3\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, true, false));
+        
         //Fragen nicht eingerückt ohne Highlighting:
         
         questions.add(new Question //2
@@ -57,7 +93,17 @@ public class SortedQuestions {
         				+ ""
         		, false, false));
         
-        
+        questions.add(new Question //3
+        		("int age = 25;\r\n"
+        				+ "if (age < 18) {\r\n"
+        				+ "System.out.println(\"You are a minor\");\r\n"
+        				+ "} else if (age >= 18 && age < 65) {\r\n"
+        				+ "System.out.println(\"You are an adult\");\r\n"
+        				+ "} else {\r\n"
+        				+ "System.out.println(\"You are a senior citizen\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, false, false));
         	
         		
         
