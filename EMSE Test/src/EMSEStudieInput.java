@@ -22,7 +22,7 @@ public class EMSEStudieInput {
     private static JPanel resultPanel;
     private static JButton startButton;
     private static JButton nextButton;
-    private static JCheckBox testbox;
+    private static JCheckBox testBox;
     private static long startTime;
     private static boolean inputRecorded = false;
 
@@ -47,17 +47,17 @@ public class EMSEStudieInput {
         JTextArea instructionsArea = new JTextArea();
         instructionsArea.setEditable(false);
         instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
-                + "\n \nEs werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting gezeigt."
+                + "\n \nEs werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting, sowie mit oder ohne Einrückung gezeigt. Insgesamt gibt es also 4 verschiedene Arten von Fragen."
                 + "\n \nAufgabe ist es, die Anzahl der Begriffe \"if\" und \"else\" zu zählen."
                 + "\n \nEin \"else if\" Statement zählt folglich als 2."
                 + "\n \nBitte geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 auf der Tastatur ein."
-                + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
+                + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können. Nach Anklicken des Weiter-Buttons läuft die Zeitmessung erneut, bis eine Antwort auf die nächste Frage eingegeben wurde."
                 + "\n \nÄnderungen am eingegebenen Ergebnis sind nachträglich nicht möglich."
-                + "\n \nAbsolvieren Sie die Studie zum ersten mal, können Sie \"Testdurchlauf\" ankreuzen, um ein Gefühl für den Ablauf und die Art der gestellten Fragen zu bekommen. Ihnen werden dann zufällige Fragen präsentiert, die nicht Teil des gewerteten Durchlaufs sind."
+                + "\n \nAbsolvieren Sie die Studie zum ersten mal, können Sie \"Testdurchlauf\" ankreuzen, um ein Gefühl für den Ablauf und die Art der gestellten Fragen zu bekommen. Ihnen werden dann zufällige Fragen aus einem anderen Fragenkatalog präsentiert, die nicht Teil des gewerteten Durchlaufs sind."
                 + "\n \nBitte legen sie eine Hand auf die Tastatur und die andere auf die Maus, um die Eingabeverzögerung möglichst klein zu halten."
-                + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
+                + "\n \nUm zu beginnen, wählen Sie bitte aus ob Sie einen Testdurchlauf durchführen möchten oder nicht. Klicken Sie dann bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
-        instructionsArea.setFont(new Font("Arial", Font.PLAIN, 25)); // Schriftgröße für Instruction-Area
+        instructionsArea.setFont(new Font("Arial", Font.PLAIN, 20)); // Schriftgröße für Instruction-Area
         instructionsArea.setWrapStyleWord(true);
         instructionsArea.setPreferredSize(new Dimension(1000,800));
         
@@ -65,18 +65,18 @@ public class EMSEStudieInput {
         
         //Checkbox für Testdurchlauf
         
-        testbox = new JCheckBox("Testdurchlauf");
-        testbox.setFont(new Font("Arial", Font.BOLD, 25));
-        testbox.setPreferredSize(new Dimension(1000,100));
+        testBox = new JCheckBox("Testdurchlauf");
+        testBox.setFont(new Font("Arial", Font.BOLD, 25));
+        testBox.setPreferredSize(new Dimension(1000,100));
         
-        testbox.addActionListener(new ActionListener() {
+        testBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				questions = TestQuestions.getQuestions();  //Wenn die Checkbox angekreuzt ist, werden Testfragen anstelle der richtigen Fragen gezeigt
 			}
         });
         
-        mainFrame.add(testbox,BorderLayout.CENTER);
+        mainFrame.add(testBox,BorderLayout.CENTER);
         
         
         // Start-Button
