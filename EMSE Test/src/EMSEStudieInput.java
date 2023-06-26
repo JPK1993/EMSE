@@ -22,6 +22,7 @@ public class EMSEStudieInput {
     private static JPanel resultPanel;
     private static JButton startButton;
     private static JButton nextButton;
+    private static JCheckBox testbox;
     private static long startTime;
     private static boolean inputRecorded = false;
 
@@ -29,7 +30,8 @@ public class EMSEStudieInput {
     	
     	//Fragen aus EMSEQuestions.java importieren
     	
-        questions = EMSEQuestions.getQuestions();
+      //questions = TestQuestions.getQuestions();		//Testfragen
+      questions = SortedQuestions.getQuestions();		//Richtige Fragen
         
      // Fragen zufällig durcheinander würfeln (Kann auskommentiert werden)
          Collections.shuffle(questions);
@@ -51,20 +53,37 @@ public class EMSEStudieInput {
                 + "\n \nBitte geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 auf der Tastatur ein."
                 + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können."
                 + "\n \nÄnderungen am eingegebenen Ergebnis sind nachträglich nicht möglich."
-                //+ "\n \nEs werden nur korrekte Antworten gewertet, um die durchschnittliche, benötigte Zeit zum richtigen Beantworten der Fragen mit oder ohne Syntax-Highlighting auszuwerten."
+                + "\n \nAbsolvieren Sie die Studie zum ersten mal, können Sie \"Testdurchlauf\" ankreuzen, um ein Gefühl für den Ablauf und die Art der gestellten Fragen zu bekommen. Ihnen werden dann zufällige Fragen präsentiert, die nicht Teil des gewerteten Durchlaufs sind."
                 + "\n \nBitte legen sie eine Hand auf die Tastatur und die andere auf die Maus, um die Eingabeverzögerung möglichst klein zu halten."
                 + "\n \nUm zu beginnen, klicken Sie bitte auf 'Start'.");
         instructionsArea.setLineWrap(true);
         instructionsArea.setFont(new Font("Arial", Font.PLAIN, 25)); // Schriftgröße für Instruction-Area
         instructionsArea.setWrapStyleWord(true);
+        instructionsArea.setPreferredSize(new Dimension(1000,800));
         
-        mainFrame.add(instructionsArea, BorderLayout.CENTER); //Instruction Area zum Main Frame hinzufügen
-
+        mainFrame.add(instructionsArea, BorderLayout.NORTH); //Instruction Area zum Main Frame hinzufügen
+        
+        //Checkbox für Testdurchlauf
+        
+        testbox = new JCheckBox("Testdurchlauf");
+        testbox.setFont(new Font("Arial", Font.BOLD, 25));
+        testbox.setPreferredSize(new Dimension(1000,100));
+        
+        testbox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				questions = TestQuestions.getQuestions();  //Wenn die Checkbox angekreuzt ist, werden Testfragen anstelle der richtigen Fragen gezeigt
+			}
+        });
+        
+        mainFrame.add(testbox,BorderLayout.CENTER);
+        
+        
         // Start-Button
         
         startButton = new JButton("Start");
         startButton.setFont(new Font("Arial", Font.BOLD, 25)); //Schriftformat
-        startButton.setPreferredSize(new Dimension(1000, 50)); //Buttongröße
+        startButton.setPreferredSize(new Dimension(1000, 100)); //Buttongröße
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -225,7 +244,7 @@ public class EMSEStudieInput {
         	
         	// Erste Zeile (überschrift)
         	
-            writer.append("Highlighting,Time,Count,Indentation\n");
+            writer.append("Highlighting,Time,LineCount,Indentation,CorrectAnswer,Position\n");
             
             //Zeilen mit Messwerten
         	
@@ -233,8 +252,9 @@ public class EMSEStudieInput {
             	boolean enableFormatting = questions.get(i).isEnableFormatting();
                 double time = times.get(i);
                 int lineCount = questions.get(i).getLineCount();
-                boolean indented = questions.get(i).getindented();              
-                writer.append(String.valueOf(enableFormatting)).append(",").append(String.valueOf(time)).append(",").append(String.valueOf(lineCount)).append(",").append(String.valueOf(indented)).append("\n");         
+                boolean indented = questions.get(i).getindented();    
+                String answer = questions.get(i).getAnswer();
+                writer.append(String.valueOf(enableFormatting)).append(",").append(String.valueOf(time)).append(",").append(String.valueOf(lineCount)).append(",").append(String.valueOf(indented)).append(",").append(String.valueOf(answer)).append(",").append(String.valueOf(i+1)).append("\n");         
 
             }
             System.out.println("CSV Datei erstellt!");

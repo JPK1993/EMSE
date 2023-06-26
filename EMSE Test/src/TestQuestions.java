@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class EMSEQuestions {
+public class TestQuestions {
 	
     public static List<Question> getQuestions() {
         List<Question> questions = new ArrayList<>();
 
-       // questions.add(new Question("FRAGE", true/false für Syntax Highlighting, "ANTWORT", Schriftgröße));
+     // questions.add(new Question("FRAGE", true/false für Syntax Highlighting, true/false für Einrückung));
         
         //Fragen eingerückt:
         
