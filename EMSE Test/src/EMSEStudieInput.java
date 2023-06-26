@@ -48,8 +48,8 @@ public class EMSEStudieInput {
         instructionsArea.setEditable(false);
         instructionsArea.setText("Die Studie zum Thema Syntax-Highlighting beginnt in Kürze."
                 + "\n \nEs werden Ihnen zufällige Code-Bruchstücke mit oder ohne Syntax-Highlighting, sowie mit oder ohne Einrückung gezeigt. Insgesamt gibt es also 4 verschiedene Arten von Fragen."
-                + "\n \nAufgabe ist es, die Anzahl der Begriffe \"if\" und \"else\" zu zählen."
-                + "\n \nEin \"else if\" Statement zählt folglich als 2."
+                + "\n \nAufgabe ist es, die Anzahl der Begriffe \"if\", \"else\" und \"if else\" zu zählen."
+                + "\n \nEin \"if\" Statement zählt also als 1, ein \"else\" Statement zählt als 1, und ein \"else if\" Statement zählt ebenfalls als 1."
                 + "\n \nBitte geben Sie Ihre Antwort durch das Drücken einer Zahl zwischen 0 und 9 auf der Tastatur ein."
                 + "\n \nSobald eine Zahl gedrückt wurde, wird die Zeit gestoppt und der Weiter-Button aktiviert, mit dem Sie per Mausklick zur nächsten Frage springen können. Nach Anklicken des Weiter-Buttons läuft die Zeitmessung erneut, bis eine Antwort auf die nächste Frage eingegeben wurde."
                 + "\n \nÄnderungen am eingegebenen Ergebnis sind nachträglich nicht möglich."

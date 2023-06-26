@@ -666,23 +666,45 @@ public class TestQuestions {
         return lines.length;
     }
     
-    //Wörter 'if' und 'else' zählen um korrekte Antworten zu berechnen (testweise)
     
     
-    public static int countKeywords(String questionText) {
-        int count = 0;
-        String lowercaseText = questionText.toLowerCase();
-        String[] words = lowercaseText.split("\\W+");
-        
-        for (String word : words) {
-            if (word.equals("if") || word.equals("else")) {
-                count++;
-            }
-        }
-        
-        return count;
-    }
-
+  //Wörter 'if' und 'else' zählen um korrekte Antworten zu berechnen 
+    
+    
+//  public static int countKeywords(String questionText) {
+//      int count = 0;
+//      String lowercaseText = questionText.toLowerCase();
+//      String[] words = lowercaseText.split("\\W+");
+//      
+//      for (String word : words) {
+//          if (word.equals("if") || word.equals("else")) {
+//              count++;
+//          }
+//      }
+//      
+//      return count;
+//  }
+  
+  
+  //if, else, und if else Statements zählen, um korrekte Antworten zu berechnen
+  
+  public static int countKeywords(String questionText) {
+      int count = 0;
+      String lowercaseText = questionText.toLowerCase();
+      
+      // Replace all instances of "if else" with a unique keyword ("ifelse")
+      String modifiedText = lowercaseText.replaceAll("else if", "elseif");
+      
+      String[] words = modifiedText.split("\\W+");
+      
+      for (String word : words) {
+          if (word.equals("if") || word.equals("else") || word.equals("elseif")) {
+              count++;
+          }
+      }
+      
+      return count;
+  }
 
     
     

@@ -3,30 +3,41 @@ public class Question {
     private boolean enableFormatting;
     private String answer = "0";
     private int lineCount;
-    private int textSize;
     private boolean indented;
 
-//    public Question(String question, boolean enableFormatting, String answer) {
-//        this.question = question;
-//        this.enableFormatting = enableFormatting;
-//        this.answer = answer;
-//    }
-    
+    //Beim erzeugen des Objekts weden Antwort und Linecount automatisch berechnet, Indentation muss manuell gesetzt werden,
+    //je nach Formatierung der Frage
+ 
+
     public Question(String question, boolean enableFormatting, boolean indented) {
         this.question = question;
         this.enableFormatting = enableFormatting;
         this.indented = indented;
     }
     
-
+    //Getter + Setter:
+    
+    //Question: Frage-String
+    
+    public void setQuestions(String question) {
+    	this.question = question;
+    }
+    
     public String getQuestion() {
-    	
         return question;
+    }
+    
+    //Highlighting: Flag für das automatische Highlighting (an oder aus) durch RSyntaxTextArea
+    
+    public void setEnableFormatting(boolean enableFormatting) {
+    	this.enableFormatting = enableFormatting;
     }
 
     public boolean isEnableFormatting() {
         return enableFormatting;
     }
+    
+    //Answer: Antwort zur Frage (zwischen 0 und 9) Wird automatisch für alle Fragen berechnet und in die Variable eingetragen.
     
     public void setAnswer(String answer) {
     	this.answer = answer;
@@ -36,6 +47,8 @@ public class Question {
     	return answer;
     }
     
+    //LineCount: Zeilenanzahl des Code-Bruchstücks der Fragestellung. Wird automatisch für alle Fragen berechnet und ins Objekt eingetragen.
+    
     public int getLineCount() {
     	return lineCount;
     }
@@ -44,13 +57,8 @@ public class Question {
     	this.lineCount = lineCount;
     }
     
-    public int gettextSize() {
-    	return textSize;
-    }
+    //Indentation: Flag zum anzeigen der Einrückung zur späteren statistischen Auswertung. Muss von Hand gesetzt werden.
     
-    public void settextSize(int textSize) {
-    	this.textSize = textSize;
-    }
     
     public boolean getindented() {
     	return indented;

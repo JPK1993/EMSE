@@ -10,12 +10,12 @@ public class SortedQuestions {
         
         //Fragen eingerückt mit Highlighting:
         
-        questions.add(new Question
+        questions.add(new Question //2
         		("int x = 10;\r\n"
-        				+ "if (x > 0) {\r\n"
-        				+ "    System.out.println(\"x is positive\");\r\n"
-        				+ "} else if (x < 0) {\r\n"
-        				+ "    System.out.println(\"x is negative\");\r\n"
+        				+ "if (x > 5) {\r\n"
+        				+ "    System.out.println(\"x is greater than 5\");\r\n"
+        				+ "} else {\r\n"
+        				+ "    System.out.println(\"x is less than or equal to 5\");\r\n"
         				+ "}\r\n"
         				+ ""
         		, true, true));
@@ -23,9 +23,39 @@ public class SortedQuestions {
         
         //Fragen eingerückt ohne Highlighting:
         
+        questions.add(new Question //2
+        		("int num = 15;\r\n"
+        				+ "if (num < 10) {\r\n"
+        				+ "    System.out.println(\"The number is less than 10\");\r\n"
+        				+ "} else if (num > 20) {\r\n"
+        				+ "    System.out.println(\"The number is greater than 20\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, false, true));
+        
         //Fragen nicht eingerückt mit Highlighting:
         
+        questions.add(new Question //2
+        		("int score = 80;\r\n"
+        				+ "if (score >= 90) {\r\n"
+        				+ "System.out.println(\"Excellent!\");\r\n"
+        				+ "}else {\r\n"
+        				+ "System.out.println(\"Good job!\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, true, false));
+        
         //Fragen nicht eingerückt ohne Highlighting:
+        
+        questions.add(new Question //2
+        		("boolean isRaining = false;\r\n"
+        				+ "if (isRaining) {\r\n"
+        				+ "System.out.println(\"It's raining\");\r\n"
+        				+ "} else {\r\n"
+        				+ "System.out.println(\"It's not raining\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, false, false));
         
         
         	
@@ -73,22 +103,48 @@ public class SortedQuestions {
         return lines.length;
     }
     
-    //Wörter 'if' und 'else' zählen um korrekte Antworten zu berechnen (testweise)
+    //Wörter 'if' und 'else' zählen um korrekte Antworten zu berechnen 
     
+    
+//    public static int countKeywords(String questionText) {
+//        int count = 0;
+//        String lowercaseText = questionText.toLowerCase();
+//        String[] words = lowercaseText.split("\\W+");
+//        
+//        for (String word : words) {
+//            if (word.equals("if") || word.equals("else")) {
+//                count++;
+//            }
+//        }
+//        
+//        return count;
+//    }
+    
+    
+    //if, else, und if else Statements zählen, um korrekte Antworten zu berechnen
     
     public static int countKeywords(String questionText) {
         int count = 0;
         String lowercaseText = questionText.toLowerCase();
-        String[] words = lowercaseText.split("\\W+");
+        
+        // Replace all instances of "if else" with a unique keyword ("ifelse")
+        String modifiedText = lowercaseText.replaceAll("else if", "elseif");
+        
+        String[] words = modifiedText.split("\\W+");
         
         for (String word : words) {
-            if (word.equals("if") || word.equals("else")) {
+            if (word.equals("if") || word.equals("else") || word.equals("elseif")) {
                 count++;
             }
         }
         
         return count;
     }
+
+    
+    
+    
+    
 
 
     
