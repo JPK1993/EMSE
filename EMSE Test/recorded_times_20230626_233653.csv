@@ -1,9 +1,0 @@
-Highlighting,Time,LineCount,Indentation,CorrectAnswer,Position
-false,2.421,6,false,2,1
-false,0.893,8,true,3,2
-true,1.382,8,true,3,3
-false,0.521,6,true,2,4
-true,0.762,6,false,2,5
-true,0.685,8,false,3,6
-false,1.455,8,false,3,7
-true,0.617,6,true,2,8
