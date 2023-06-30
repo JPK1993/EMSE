@@ -5,9 +5,8 @@ public class Question {
     private int lineCount;
     private boolean indented;
 
-    //Beim erzeugen des Objekts weden Antwort und Linecount automatisch berechnet, Indentation muss manuell gesetzt werden,
-    //je nach Formatierung der Frage
- 
+    //Beim erzeugen des Objekts weden Antwort und Linecount automatisch berechnet, Indentation muss manuell gesetzt und durchgeführt werden!
+    //Der indentation-wert im Objekt dient also nur zur statistischen Auswertung
 
     public Question(String question, boolean enableFormatting, boolean indented) {
         this.question = question;

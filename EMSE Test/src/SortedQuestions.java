@@ -32,6 +32,20 @@ public class SortedQuestions {
         				+ ""
         		, true, true));
         
+        questions.add(new Question //4
+        		("int x = 10;\r\n"
+        				+ "if (x > 10) {\r\n"
+        				+ "    System.out.println(\"x is greater than 10\");\r\n"
+        				+ "} else if (x < 10) {\r\n"
+        				+ "    System.out.println(\"x is less than 10\");\r\n"
+        				+ "} else if (x == 10) {\r\n"
+        				+ "    System.out.println(\"x is equal to 10\");\r\n"
+        				+ "} else {\r\n"
+        				+ "    System.out.println(\"x is an unknown value\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, true, true));
+        
         
         //Fragen eingerückt ohne Highlighting:
         
@@ -49,6 +63,20 @@ public class SortedQuestions {
         		("int score = 75;\r\n"
         				+ "if (score >= 90) {\r\n"
         				+ "    System.out.println(\"Excellent!\");\r\n"
+        				+ "} else if (score >= 70) {\r\n"
+        				+ "    System.out.println(\"Good job!\");\r\n"
+        				+ "} else {\r\n"
+        				+ "    System.out.println(\"Keep working hard!\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, false, true));
+        
+        questions.add(new Question //4
+        		("int score = 75;\r\n"
+        				+ "if (score >= 90) {\r\n"
+        				+ "    System.out.println(\"Excellent!\");\r\n"
+        				+ "} else if (score >= 80) {\r\n"
+        				+ "    System.out.println(\"Very good!\");\r\n"
         				+ "} else if (score >= 70) {\r\n"
         				+ "    System.out.println(\"Good job!\");\r\n"
         				+ "} else {\r\n"
@@ -81,6 +109,20 @@ public class SortedQuestions {
         				+ ""
         		, true, false));
         
+        questions.add(new Question //4
+        		("int num = 7;\r\n"
+        				+ "if (num % 2 == 0) {\r\n"
+        				+ "    System.out.println(\"The number is even\");\r\n"
+        				+ "} else if (num % 3 == 0) {\r\n"
+        				+ "    System.out.println(\"The number is divisible by 3\");\r\n"
+        				+ "} else if (num % 5 == 0) {\r\n"
+        				+ "    System.out.println(\"The number is divisible by 5\");\r\n"
+        				+ "} else {\r\n"
+        				+ "    System.out.println(\"The number is not divisible by 2, 3, or 5\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, true, false));
+        
         //Fragen nicht eingerückt ohne Highlighting:
         
         questions.add(new Question //2
@@ -101,6 +143,20 @@ public class SortedQuestions {
         				+ "System.out.println(\"You are an adult\");\r\n"
         				+ "} else {\r\n"
         				+ "System.out.println(\"You are a senior citizen\");\r\n"
+        				+ "}\r\n"
+        				+ ""
+        		, false, false));
+        
+        questions.add(new Question //4
+        		("int age = 25;\r\n"
+        				+ "if (age < 18) {\r\n"
+        				+ "    System.out.println(\"You are a minor\");\r\n"
+        				+ "} else if (age >= 18 && age < 30) {\r\n"
+        				+ "    System.out.println(\"You are a young adult\");\r\n"
+        				+ "} else if (age >= 30 && age < 60) {\r\n"
+        				+ "    System.out.println(\"You are an adult\");\r\n"
+        				+ "} else {\r\n"
+        				+ "    System.out.println(\"You are a senior citizen\");\r\n"
         				+ "}\r\n"
         				+ ""
         		, false, false));
