@@ -463,17 +463,6 @@ public class SortedQuestions {
         	
         	
         		
-        
-        	
-        	
-        
-        
-        
-       
-        	
-        	
-        	
-     
         //Aufruf der Zählmethoden für Antwortgenerierung und Zeilenzahl
         
         
